@@ -31,7 +31,7 @@ const CartItem = ({ item }) => {
           <FontAwesomeIcon
             icon={faTrashCan}
             className='text-2xl my-auto cursor-pointer hover:scale-105 duration-200'
-            onClick={() => cart.removeFromCart(productData.id)}
+            onClick={() => cart.removeOneFromCart(productData.id)}
           />
         </div>
       </div>

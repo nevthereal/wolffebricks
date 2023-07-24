@@ -4,8 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 export const CartContext = createContext({
   items: [],
+  getProductQuantity: () => {},
   addOneToCart: () => {},
-  removeFromCart: () => {},
+  removeOneFromCart: () => {},
+  deleteFromCart: () => {},
   isInCart: () => {},
   getSubTotal: () => {},
 });
@@ -30,7 +32,7 @@ export function CartProvider({ children }) {
   const contextValue = {
     items: cartProducts,
     addOneToCart,
-    removeFromCart,
+    removeOneFromCart,
     getSubTotal,
     isInCart,
     message,
@@ -41,9 +43,24 @@ export function CartProvider({ children }) {
     return cartProducts.some((product) => product.id === id);
   }
 
+  function getProductQuantity(id) {
+    const quantity = cartProducts.find(
+      (product) => product.id === id
+    )?.quantity;
+
+    if (quantity === undefined) {
+      return 0;
+    }
+
+    return quantity;
+  }
+
   function addOneToCart(id) {
     let itemName = getProductData(id).title;
-    if (!isInCart(id)) {
+
+    const quantity = getProductQuantity(id);
+
+    if (quantity === 0) {
       setCartProducts([
         ...cartProducts,
         {
@@ -51,12 +68,36 @@ export function CartProvider({ children }) {
           quantity: 1,
         },
       ]);
+      setMessage(getMessage(itemName, "added to"));
+      navigate("/products");
+    } else {
+      setCartProducts(
+        cartProducts.map((product) => {
+          product.id === id
+            ? { ...product, quantity: product.quantity + 1 }
+            : product;
+        })
+      );
     }
-    setMessage(getMessage(itemName, "added to"));
-    navigate("/products");
   }
 
-  function removeFromCart(id) {
+  function removeOneFromCart(id) {
+    const quantity = getProductQuantity(id);
+
+    if (quantity === 1) {
+      deleteFromCart(id);
+    } else {
+      setCartProducts(
+        cartProducts.map((product) =>
+          product.id === id
+            ? { ...product, quantity: product.quantity - 1 }
+            : product
+        )
+      );
+    }
+  }
+
+  function deleteFromCart(id) {
     let itemName = getProductData(id).title;
     setCartProducts((cartProducts) =>
       cartProducts.filter((currentProduct) => {
@@ -76,11 +117,9 @@ export function CartProvider({ children }) {
     return subTotal;
   }
   useEffect(() => {
-    // Check and clean up the cart when the component mounts
     cleanUpCart();
   }, []);
 
-  // Function to check and clean up the cart
   function cleanUpCart() {
     const updatedCartProducts = cartProducts.filter((cartItem) => {
       const productExists = products.some(
@@ -89,7 +128,6 @@ export function CartProvider({ children }) {
       return productExists;
     });
 
-    // If the cart was modified during cleanup, update the cartProducts and the localStorage
     if (updatedCartProducts.length !== cartProducts.length) {
       setCartProducts(updatedCartProducts);
       localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
