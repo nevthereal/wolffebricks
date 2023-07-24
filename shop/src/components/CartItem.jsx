@@ -10,6 +10,7 @@ const CartItem = ({ item }) => {
   const cart = useContext(CartContext);
   const id = item.id;
   const productData = getProductData(id);
+  const quantity = item.quantity;
 
   return (
     <div className='w-full border border-gray-300 dark:border-gray-500 bg-gray-200 dark:bg-gray-700 text-left rounded-xl py-4 px-4 max-w-5xl mx-auto'>
@@ -28,11 +29,20 @@ const CartItem = ({ item }) => {
               {productData.price} CHF
             </p>
           </div>
-          <FontAwesomeIcon
-            icon={faTrashCan}
-            className='text-2xl my-auto cursor-pointer hover:scale-105 duration-200'
-            onClick={() => cart.removeOneFromCart(productData.id)}
-          />
+          <div className='my-auto flex gap-2'>
+            <div className='p-2 border flex gap-4'>
+              <span>{quantity}</span>
+              <div className='flex gap-2'>
+                <button onClick={() => cart.addMoreToCart(id)}>+</button>
+                <button onClick={() => cart.removeOneFromCart(id)}>-</button>
+              </div>
+            </div>
+            <FontAwesomeIcon
+              icon={faTrashCan}
+              className='text-2xl my-auto cursor-pointer hover:scale-105 duration-200'
+              onClick={() => cart.deleteFromCart(id)}
+            />
+          </div>
         </div>
       </div>
     </div>

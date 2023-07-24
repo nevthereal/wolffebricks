@@ -10,6 +10,7 @@ export const CartContext = createContext({
   deleteFromCart: () => {},
   isInCart: () => {},
   getSubTotal: () => {},
+  addMoreToCart: () => {},
 });
 
 export function CartProvider({ children }) {
@@ -29,16 +30,6 @@ export function CartProvider({ children }) {
     localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
   }, [cartProducts]);
 
-  const contextValue = {
-    items: cartProducts,
-    addOneToCart,
-    removeOneFromCart,
-    getSubTotal,
-    isInCart,
-    message,
-    setMessage,
-  };
-
   function isInCart(id) {
     return cartProducts.some((product) => product.id === id);
   }
@@ -56,29 +47,25 @@ export function CartProvider({ children }) {
   }
 
   function addOneToCart(id) {
-    let itemName = getProductData(id).title;
+    setCartProducts([
+      ...cartProducts,
+      {
+        id: id,
+        quantity: 1,
+      },
+    ]);
+    setMessage(getMessage(getProductData(id).title, "added to"));
+    navigate("/products");
+  }
 
-    const quantity = getProductQuantity(id);
-
-    if (quantity === 0) {
-      setCartProducts([
-        ...cartProducts,
-        {
-          id: id,
-          quantity: 1,
-        },
-      ]);
-      setMessage(getMessage(itemName, "added to"));
-      navigate("/products");
-    } else {
-      setCartProducts(
-        cartProducts.map((product) => {
-          product.id === id
-            ? { ...product, quantity: product.quantity + 1 }
-            : product;
-        })
-      );
-    }
+  function addMoreToCart(id) {
+    setCartProducts((prevCartProducts) =>
+      prevCartProducts.map((product) =>
+        product.id === id
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
+      )
+    );
   }
 
   function removeOneFromCart(id) {
@@ -87,8 +74,8 @@ export function CartProvider({ children }) {
     if (quantity === 1) {
       deleteFromCart(id);
     } else {
-      setCartProducts(
-        cartProducts.map((product) =>
+      setCartProducts((prevCartProducts) =>
+        prevCartProducts.map((product) =>
           product.id === id
             ? { ...product, quantity: product.quantity - 1 }
             : product
@@ -98,24 +85,29 @@ export function CartProvider({ children }) {
   }
 
   function deleteFromCart(id) {
-    let itemName = getProductData(id).title;
     setCartProducts((cartProducts) =>
       cartProducts.filter((currentProduct) => {
         return currentProduct.id != id;
       })
     );
-    setMessage(getMessage(itemName, "removed from"));
+    setMessage(getMessage(getProductData(id).title, "removed from"));
   }
 
-  function getSubTotal() {
+  function getSubTotal(cartProducts) {
     let subTotal = 0;
-    cartProducts.map((cartItem) => {
-      const productData = getProductData(cartItem.id);
-      subTotal += productData.price;
+    cartProducts.forEach((cartItem) => {
+      if (cartItem && cartItem.id) {
+        // Add this check
+        const productData = getProductData(cartItem.id);
+        if (productData) {
+          subTotal += productData.price * cartItem.quantity;
+        }
+      }
     });
 
     return subTotal;
   }
+
   useEffect(() => {
     cleanUpCart();
   }, []);
@@ -133,6 +125,19 @@ export function CartProvider({ children }) {
       localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
     }
   }
+
+  const contextValue = {
+    items: cartProducts,
+    getProductQuantity,
+    addOneToCart,
+    addMoreToCart,
+    removeOneFromCart,
+    deleteFromCart,
+    getSubTotal: () => getSubTotal(cartProducts),
+    isInCart,
+    message,
+    setMessage,
+  };
 
   return (
     <CartContext.Provider value={contextValue}>{children}</CartContext.Provider>
