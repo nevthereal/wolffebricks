@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+html {
+    scroll-behavior: smooth;
+    @apply text-center bg-white dark:bg-gray-800;
+}
+
+#header {
+    background-image: url(./assets/wb_banner.png);
+}
+
+.productContainer {
+    @apply md:grid m-4 md:grid-cols-2
+}
+
+.productImageMain {
+    @apply w-80 md:w-[720px] my-4 mx-auto border border-gray-300 rounded-xl
+}
+
+.productTitle {
+    @apply font-bold text-2xl md:text-4xl m-4
+}
+
+.productDescContainer {
+    @apply m-4 flex justify-center space-x-10
+}
+
+.productATCOutline {
+    @apply border border-gray-400 py-1 px-2 rounded-lg hover:scale-105 duration-200
+}
+
+.productATC {
+    @apply font-bold text-xl md:text-3xl my-auto
+}
+
+.productH2 {
+    @apply text-xl md:text-3xl text-gray-500 dark:text-gray-200 font-bold
+}
+
+.productList {
+    @apply text-sm md:text-lg list-disc mx-auto list-inside
+}
+
+.productGalleryFlex {
+    @apply flex flex-wrap justify-center gap-2 m-4
+}
+
+.productGalleryImage {
+    @apply w-[480px] my-4 border border-gray-300 dark:border-gray-600 rounded-xl
+}

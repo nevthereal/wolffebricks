@@ -1,0 +1,27 @@
+{
+  "name": "willsbrix-v3",
+  "version": "1.0.0",
+  "description": "## About this repository The official repository of [willsbrix.com](https://wilsbrix.com!) This repository contains a lot of efficiency changes to the [older repository](https://github.com/nevthereal/willsbrix-v2), such as using Vite instead of CRA or making the code more efficient with Dynamic Panel Components (see Home.jsx and Products.jsx) or the addition of the images.js file which contains all the neccessary images.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nevthereal/willsbrix-v3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nevthereal/willsbrix-v3/issues"
+  },
+  "homepage": "https://github.com/nevthereal/willsbrix-v3#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "stripe": "^12.11.0"
+  }
+}
