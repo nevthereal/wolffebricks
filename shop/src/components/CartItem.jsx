@@ -5,6 +5,7 @@ import { CartContext } from "../cartContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan } from "@fortawesome/free-regular-svg-icons";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const CartItem = ({ item }) => {
   const cart = useContext(CartContext);
@@ -30,11 +31,15 @@ const CartItem = ({ item }) => {
             </p>
           </div>
           <div className='my-auto flex gap-2'>
-            <div className='p-2 border flex gap-4'>
+            <div className='p-2 border rounded-xl border-gray-400 dark:border-gray-400 bg-gray-300 dark:bg-gray-600 flex gap-4'>
               <span>{quantity}</span>
               <div className='flex gap-2'>
-                <button onClick={() => cart.addMoreToCart(id)}>+</button>
-                <button onClick={() => cart.removeOneFromCart(id)}>-</button>
+                <button onClick={() => cart.addMoreToCart(id)}>
+                  <FontAwesomeIcon icon={faPlus} />
+                </button>
+                <button onClick={() => cart.removeOneFromCart(id)}>
+                  <FontAwesomeIcon icon={faMinus} />
+                </button>
               </div>
             </div>
             <FontAwesomeIcon
