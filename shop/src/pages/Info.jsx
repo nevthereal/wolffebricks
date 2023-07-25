@@ -6,8 +6,10 @@ import {
   faCcAmex,
   faCcDiscover,
   faCcDinersClub,
+  faGooglePay,
+  faCcJcb,
+  faApplePay,
 } from "@fortawesome/free-brands-svg-icons";
-import { useAuthState } from "react-firebase-hooks/auth";
 
 const Info = () => {
   return (
@@ -40,8 +42,7 @@ const Info = () => {
         <h1 className='text-xl md:text-2xl font-bold'>Payment methods</h1>
         <p className='md:text-xl'>
           Our payments are in CHF (Swiss Franc), because we are a
-          Switzerland-based company. We accept the following credit cards as
-          well as Apple Pay and Google Pay and you can also pay with Klarna:
+          Switzerland-based company. We accept the following credit cards:
           <ul className='flex justify-center text-4xl gap-4 my-2'>
             <li>
               <FontAwesomeIcon icon={faCcVisa} />
@@ -57,6 +58,18 @@ const Info = () => {
             </li>
             <li>
               <FontAwesomeIcon icon={faCcDinersClub} />
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faCcJcb} />
+            </li>
+          </ul>
+          And following wallets:
+          <ul className='flex justify-center text-4xl gap-4 my-2'>
+            <li>
+              <FontAwesomeIcon icon={faApplePay} />
+            </li>
+            <li>
+              <FontAwesomeIcon icon={faGooglePay} />
             </li>
           </ul>
         </p>
