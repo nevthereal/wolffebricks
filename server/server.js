@@ -38,7 +38,9 @@ app.post("/checkout", async (req, res) => {
 });
 
 app.get("/order", async (req, res) => {
-  const session = await stripe.checkout.sessions.retrieve(req.query.orderId);
+  const session = await stripe.checkout.sessions.retrieve(req.query.orderId, {
+    expand: ["line_items"],
+  });
   res.json(session);
 });
 
