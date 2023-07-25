@@ -31,10 +31,9 @@ const Info = () => {
           <a href='https://stripe.com' className='font-bold'>
             Stripe
           </a>
-          . If you are signed in with Google, the partlist will be sent to you
-          via your provided email adress. If you are signed in anonymously (as a
-          guest), you will have to provide an email at checkout. We will then
-          send the instruction(s) and a partlist file(s) to this email.
+          . We will then send the instruction(s) and a partlist file(s) to your
+          email. This email is either your address related to your Google
+          Account or your email, which you need to confirm first.
         </p>
       </div>
       <div className='my-6'>
@@ -42,7 +41,7 @@ const Info = () => {
         <p className='md:text-xl'>
           Our payments are in CHF (Swiss Franc), because we are a
           Switzerland-based company. We accept the following credit cards as
-          well as Apple Pay and Google Pay:
+          well as Apple Pay and Google Pay and you can also pay with Klarna:
           <ul className='flex justify-center text-4xl gap-4 my-2'>
             <li>
               <FontAwesomeIcon icon={faCcVisa} />
