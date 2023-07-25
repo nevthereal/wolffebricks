@@ -50,10 +50,10 @@ const Success = () => {
                 <li>
                   <span className='font-bold'>Address:</span>
                 </li>
-                <li>
-                  {orderInfo.customer_details.address.line1}{" "}
-                  {orderInfo.customer_details.address.line2}
-                </li>
+                <li>{orderInfo.customer_details.address.line1} </li>
+                {orderInfo.customer_details.address.line2 ? (
+                  <li>{orderInfo.customer_details.address.line2}</li>
+                ) : null}
                 <li>
                   {orderInfo.customer_details.address.postal_code}{" "}
                   {orderInfo.customer_details.address.city}
