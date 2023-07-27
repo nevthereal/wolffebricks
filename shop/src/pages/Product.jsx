@@ -24,7 +24,7 @@ const Product = ({
       <div className='productContainer'>
         <img src={img_main} alt='' className='productImageMain' />
         <div className='my-auto'>
-          <h1 className='productTitle'>{title} - Instructions only</h1>
+          <h1 className='productTitle'>{title}</h1>
           <div className='productDescContainer'>
             {!inCart ? (
               <button
@@ -49,7 +49,6 @@ const Product = ({
           <h2 className='productH2'>Details:</h2>
           <ul className='productList'>
             <li>{parts} Parts</li>
-            <li>Bricklink price: ~{blPrice} CHF</li>
           </ul>
         </div>
       </div>

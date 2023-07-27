@@ -20,10 +20,9 @@ const Info = () => {
         <p className='md:text-xl'>
           Me (Neville Brem) and William Tang are two students from Switzerland,
           who love to build and design LEGO models. In Summer 2022, we came up
-          with the idea to sell our designs as instructions. William designed
-          most of the sets, while I was busy building this site and processing
-          all the orders. For the moment we only sell instructions, but we plan
-          to change that within this or next year!
+          with the idea to sell our designs. William designed most of the sets,
+          while I was busy building this site and processing all the orders.
+          From September the first, we will begin to send full sets.
         </p>
       </div>
       <div className='my-6'>
