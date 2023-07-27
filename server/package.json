@@ -1,7 +1,7 @@
 {
-  "name": "willsbrix-v4",
+  "name": "wolffebricks",
   "version": "1.0.0",
-  "description": "## About this repository The official repository of [willsbrix.com](https://willsbrix.com)! This repository contains a lot of efficiency changes to the [older repository](https://github.com/nevthereal/willsbrix-v2), such as using Vite instead of CRA or making the code more efficient with Dynamic Panel Components (see Home.jsx and Products.jsx) or the addition of the images.js file which contains all the neccessary images.",
+  "description": "read README.txt",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nevthereal/willsbrix-v3.git"
+    "url": "git+https://github.com/nevthereal/wolffebricks.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/nevthereal/willsbrix-v3/issues"
+    "url": "https://github.com/nevthereal/wolffebricks/issues"
   },
-  "homepage": "https://github.com/nevthereal/willsbrix-v3#readme",
+  "homepage": "https://github.com/nevthereal/wolffebricks#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",

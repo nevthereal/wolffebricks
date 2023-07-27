@@ -1,8 +1,8 @@
 import React from "react";
-import Logo from "../assets/wb_logo.png";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { faWolfPackBattalion } from "@fortawesome/free-brands-svg-icons";
 
 import Cart from "./Cart";
 
@@ -30,12 +30,11 @@ const Navbar = ({
   return (
     <div>
       <nav className='flex justify-between mx-4 h-[10vh]'>
-        <a href='/'>
-          <img
-            className='my-auto h-[9vh] hover:scale-105 duration-200'
-            src={Logo}
-            alt='logo'
-          />
+        <a
+          href='/'
+          className='hover:scale-105 duration-200 text-6xl md:text-7xl my-auto'
+        >
+          <FontAwesomeIcon icon={faWolfPackBattalion} />
         </a>
         <div className='text-lg md:text-xl flex my-auto gap-4'>
           <p className='font-bold hover:scale-105 duration-200'>
@@ -46,7 +45,7 @@ const Navbar = ({
           </p>
         </div>
         <button
-          className='my-auto w-16 md:w-24 hover:scale-105 duration-200 text-3xl md:text-4xl'
+          className='my-aut hover:scale-105 duration-200 text-3xl md:text-4xl'
           onClick={open}
         >
           <FontAwesomeIcon icon={faShoppingCart} />
