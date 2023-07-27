@@ -132,6 +132,7 @@ const Cart = ({
                   </p>
                   {user.emailVerified ? (
                     <button
+                      disabled
                       className='border border-gray-400 py-1 px-2 rounded-lg hover:scale-105 duration-200 text-xl font-bold mt-2'
                       onClick={checkout}
                     >
@@ -140,7 +141,7 @@ const Cart = ({
                           Loading <FontAwesomeIcon icon={faSpinner} spin />
                         </span>
                       ) : (
-                        <span>Checkout</span>
+                        <span>Checkout Available at September 1st</span>
                       )}
                     </button>
                   ) : (
