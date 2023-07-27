@@ -77,7 +77,7 @@ export const products = [
     id: import.meta.env.VITE_PRODUCT_CD,
     link: "crab-droid",
     title: "Crab Droid",
-    price: 15,
+    price: 10,
     designer: "William",
     description:
       "The Crab Droid is an important part of the separatist droid army and was designed by the Techno-Union. It offers many details and is minifigure-scaled.",
