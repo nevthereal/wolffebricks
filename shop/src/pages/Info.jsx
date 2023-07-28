@@ -21,8 +21,15 @@ const Info = () => {
           Me (Neville Brem) and William Tang are two students from Switzerland,
           who love to build and design LEGO models. In Summer 2022, we came up
           with the idea to sell our designs. William designed most of the sets,
-          while I was busy building this site and processing all the orders.
-          From September the first, we will begin to send full sets.
+          while I was busy building this site and processing all the orders. We
+          now sell full sets, instead of intructions only, we have a limited
+          storage though and only ship to these countries:
+          <ul>
+            <li>CH</li>
+            <li>DE</li>
+            <li>UK</li>
+            <li>US</li>
+          </ul>
         </p>
       </div>
       <div className='my-6'>

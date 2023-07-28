@@ -20,8 +20,9 @@ const Home = () => {
             <div className='text-base bg-orange-400 border-2 border-orange-600 w-fit mt-6 mb-2 md:mx-auto mx-2 my-8 p-3 rounded-2xl'>
               <h2 className='text-2xl'>Big Change!</h2>
               <p className='font-semibold'>
-                Due changes to the website, the checkout function is disabled
-                until september the 1st. Hang on 'til then.
+                We now switched from only selling instructions to selling full
+                sets! We currently only ship to few countries, but plan to ship
+                to more soon.
               </p>
             </div>
             <a href='#featured'>
