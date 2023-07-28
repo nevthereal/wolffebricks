@@ -33,10 +33,10 @@ const Product = ({ product }) => {
                 className='border border-gray-400 py-1 px-2 rounded-lg hover:scale-105 duration-200 text-xl md:text-2xl font-bold'
                 onClick={() => cart.addOneToCart(product.id)}
               >
-                {productData && productData.active == true ? (
-                  <span>CHF {product.price} - Add to cart</span>
-                ) : (
+                {productData && productData.active == false ? (
                   <span className='text-red-500'>Out of Stock</span>
+                ) : (
+                  <span>CHF {product.price} - Add to cart</span>
                 )}
               </button>
             ) : (
