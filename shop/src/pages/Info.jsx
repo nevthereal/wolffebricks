@@ -23,13 +23,8 @@ const Info = () => {
           with the idea to sell our designs. William designed most of the sets,
           while I was busy building this site and processing all the orders. We
           now sell full sets, instead of intructions only, we have a limited
-          storage though and only ship to these countries:
-          <ul>
-            <li>CH</li>
-            <li>DE</li>
-            <li>UK</li>
-            <li>US</li>
-          </ul>
+          storage though and only ship to these countries: Switzerland, Germany,
+          the UK and the US.
         </p>
       </div>
       <div className='my-6'>
@@ -86,7 +81,7 @@ const Info = () => {
       </h1>
       <p className='md:text-xl my-1'>
         Send us an Email:{" "}
-        <a className='font-bold' href='mailto:support@willsbrix.com'>
+        <a className='font-bold' href='mailto:support@wolffebricks.store'>
           support@willsbrix.com
         </a>
       </p>
@@ -95,9 +90,9 @@ const Info = () => {
         <a
           className='font-bold'
           target='_blank'
-          href='https://twitter.com/willsbrix'
+          href='https://twitter.com/wolffe-bricks'
         >
-          @willsbrix
+          @wolffe-bricks
         </a>
       </p>
       <p className='md:text-xl my-1'>
@@ -105,11 +100,21 @@ const Info = () => {
         <a
           className='font-bold'
           target='_blank'
-          href='https://instagram.com/willsbrixlego_official'
+          href='https://instagram.com/wolffebricks_official'
         >
-          @willsbrixlego_official
+          @wolffebricks_official
         </a>
       </p>
+
+      <div className='flex gap-2 justify-center mt-8'>
+        <a href='/terms-of-service' className='font-bold'>
+          Terms of Service
+        </a>
+        <p> • </p>
+        <a href='/privacy-policy' className='font-bold'>
+          Privacy Policy
+        </a>
+      </div>
     </div>
   );
 };

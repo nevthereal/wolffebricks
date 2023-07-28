@@ -24,6 +24,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 
 const googleProvider = new GoogleAuthProvider();
 const auth = getAuth();
@@ -105,6 +107,8 @@ function App() {
             <Route index element={<Home />} />
             <Route path='/products' element={<Products />} />
             <Route path='/info' element={<Info />} />
+            <Route path='/privacy-policy' element={<PrivacyPolicy />} />
+            <Route path='/terms-of-service' element={<Terms />} />
             <Route path='/success' element={<Success auth={auth} />} />
             <Route path='/cancel' element={<Cancel />} />
             {products.map((product, index) => (

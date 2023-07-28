@@ -36,6 +36,18 @@ app.post("/checkout", async (req, res) => {
     line_items: lineItems,
     mode: "payment",
     allow_promotion_codes: true,
+    consent_collection: {
+      terms_of_service: "required",
+    },
+    custom_text: {
+      shipping_address: {
+        message:
+          "Depending on where you live, your orders can take a bit longer",
+      },
+      submit: {
+        message: "We'll email you the instructions and partlists",
+      },
+    },
     success_url: `${DOMAIN}/success?id={CHECKOUT_SESSION_ID}`,
     cancel_url: `${DOMAIN}/cancel`,
     customer_email: userEmail,
