@@ -7,7 +7,7 @@ const Success = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const orderId = urlParams.get("id");
 
-    fetch(`${import.meta.env.VITE_CHECKOUT_DOMAIN}/order?orderId=${orderId}`)
+    fetch(`${import.meta.env.VITE_SERVER_URL}/order?orderId=${orderId}`)
       .then((response) => {
         return response.json();
       })

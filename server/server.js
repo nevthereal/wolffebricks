@@ -10,16 +10,27 @@ app.use(express.json());
 
 const DOMAIN = process.env.STORE_DOMAIN;
 
+const getProductPrice = async (productId) => {
+  try {
+    const product = await stripe.products.retrieve(productId);
+    const priceId = product.default_price;
+    return priceId;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 app.post("/checkout", async (req, res) => {
   const items = req.body.items;
   const userEmail = req.body.userEmail;
   let lineItems = [];
-  items.forEach((item) => {
+  for (const item of items) {
+    const price = await getProductPrice(item.id);
     lineItems.push({
-      price: item.id,
+      price: price,
       quantity: item.quantity,
     });
-  });
+  }
 
   const session = await stripe.checkout.sessions.create({
     line_items: lineItems,
@@ -42,6 +53,11 @@ app.get("/order", async (req, res) => {
     expand: ["line_items"],
   });
   res.json(session);
+});
+
+app.get("/product-data", async (req, res) => {
+  const product = await stripe.products.retrieve(req.query.productId);
+  res.json(product);
 });
 
 app.listen(4000, () => console.log("LISTENING ON PORT 4000"));

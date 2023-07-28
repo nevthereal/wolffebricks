@@ -111,20 +111,7 @@ function App() {
               <Route
                 key={index}
                 path={`/products/${product.link}`}
-                element={
-                  <Product
-                    title={product.title}
-                    price={product.price}
-                    description={product.description}
-                    parts={product.parts}
-                    blPrice={product.blPrice}
-                    img_main={product.img_main}
-                    img_1={product.img_1}
-                    img_2={product.img_2}
-                    id={product.id}
-                    designer={product.designer}
-                  />
-                }
+                element={<Product product={product} />}
               />
             ))}
           </Routes>

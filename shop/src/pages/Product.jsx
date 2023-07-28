@@ -1,42 +1,48 @@
 import React from "react";
 import { CartContext } from "../cartContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
-const Product = ({
-  title,
-  price,
-  description,
-  parts,
-  blPrice,
-  img_main,
-  img_1,
-  img_2,
-  designer,
-  id,
-}) => {
+const Product = ({ product }) => {
   const cart = useContext(CartContext);
-  const inCart = cart.isInCart(id);
+  const inCart = cart.isInCart(product.id);
+  const [productData, setProductData] = useState(null);
 
-  const [showPopup, setShowPopup] = useState(false);
+  useEffect(() => {
+    fetch(
+      `${import.meta.env.VITE_SERVER_URL}/product-data?productId=${product.id}`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((product) => {
+        setProductData(product);
+      })
+      .catch((error) => console.error(error));
+  }, [product.id]);
 
   return (
     <div>
       <div className='productContainer'>
-        <img src={img_main} alt='' className='productImageMain' />
+        <img src={product.img_main} alt='' className='productImageMain' />
         <div className='my-auto'>
-          <h1 className='productTitle'>{title}</h1>
+          <h1 className='productTitle'>{product.title}</h1>
           <div className='productDescContainer'>
             {!inCart ? (
               <button
+                disabled={productData && productData.active == false}
                 className='border border-gray-400 py-1 px-2 rounded-lg hover:scale-105 duration-200 text-xl md:text-2xl font-bold'
-                onClick={() => cart.addOneToCart(id)}
+                onClick={() => cart.addOneToCart(product.id)}
               >
-                CHF {price} - Add to cart
+                {productData && productData.active == true ? (
+                  <span>CHF {product.price} - Add to cart</span>
+                ) : (
+                  <span className='text-red-500'>Out of Stock</span>
+                )}
               </button>
             ) : (
               <button
                 className='border border-gray-400 py-1 px-2 rounded-lg hover:scale-105 duration-200 text-xl md:text-2xl font-bold'
-                onClick={() => cart.deleteFromCart(id)}
+                onClick={() => cart.deleteFromCart(product.id)}
               >
                 Remove from Cart
               </button>
@@ -44,20 +50,20 @@ const Product = ({
           </div>
           <h2 className='productH2'>Short description:</h2>
           <p className='text-sm md:text-lg m-4'>
-            Designed by {designer} <br /> {description}
+            Designed by {product.designer} <br /> {product.description}
           </p>
           <h2 className='productH2'>Details:</h2>
           <ul className='productList'>
-            <li>{parts} Parts</li>
+            <li>{product.parts} Parts</li>
           </ul>
         </div>
       </div>
       <div id='gallery'>
         <h2 className='productH2'>Gallery:</h2>
         <div className='productGalleryFlex'>
-          <img className='productGalleryImage' src={img_main} alt='' />
-          <img className='productGalleryImage' src={img_1} alt='' />
-          <img className='productGalleryImage' src={img_2} alt='' />
+          <img className='productGalleryImage' src={product.img_main} alt='' />
+          <img className='productGalleryImage' src={product.img_1} alt='' />
+          <img className='productGalleryImage' src={product.img_2} alt='' />
         </div>
       </div>
     </div>

@@ -61,7 +61,7 @@ const Cart = ({
     try {
       setIsLoading(true);
       const response = await fetch(
-        `${import.meta.env.VITE_CHECKOUT_DOMAIN}/checkout`,
+        `${import.meta.env.VITE_SERVER_URL}/checkout`,
         {
           method: "POST",
           headers: {
