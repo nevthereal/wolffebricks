@@ -169,7 +169,8 @@ const Cart = ({
               )}
               <div className='my-2'>
                 <p className='mb-2 text-sm'>
-                  Signed in as <span className='font-bold'>{user.email}</span>
+                  Signed in as <span className='font-bold'>{user.email}</span>{" "}
+                  (using {user.providerData[0].providerId})
                 </p>
                 <button
                   onClick={handleSignOut}
