@@ -39,18 +39,21 @@ const Home = () => {
         <div className='flex justify-center gap-4 flex-wrap'>
           <Panel
             link={`/products/${products[2].link}`}
+            id={products[2].id}
             img={products[2].img_main}
             title={products[2].title}
             price={products[2].price}
           />
           <Panel
             link={`/products/${products[3].link}`}
+            id={products[3].id}
             img={products[3].img_main}
             title={products[3].title}
             price={products[3].price}
           />
           <Panel
             link={`/products/${products[4].link}`}
+            id={products[4].id}
             img={products[4].img_main}
             title={products[4].title}
             price={products[4].price}
