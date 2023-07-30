@@ -23,6 +23,7 @@ import {
   signOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  sendEmailVerification,
 } from "firebase/auth";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
@@ -35,13 +36,10 @@ const handleGoogleSignIn = () => {
     .catch(() => {});
 };
 
-const handleEmailSignUp = (name, email, password) => {
+const handleEmailSignUp = (email, password) => {
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      updateProfile(user, {
-        displayName: name,
-      }).then(() => {});
+    .then(() => {
+      sendEmailVerification(auth.currentUser);
     })
     .catch((error) => {
       let errorCode = error.code;

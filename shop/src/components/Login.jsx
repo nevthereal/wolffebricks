@@ -10,7 +10,6 @@ const Login = ({
   const [signUpForm, setSignUpForm] = useState({
     email: "",
     password: "",
-    userName: "",
   });
   const [signInForm, setSignInForm] = useState({
     email: "",
@@ -22,11 +21,7 @@ const Login = ({
 
   const handleEmailSignUpSubmit = (e) => {
     e.preventDefault();
-    handleEmailSignUp(
-      signUpForm.userName,
-      signUpForm.email,
-      signUpForm.password
-    );
+    handleEmailSignUp(signUpForm.email, signUpForm.password);
   };
 
   const handleEmailSignInSubmit = (e) => {
@@ -57,15 +52,6 @@ const Login = ({
             onSubmit={handleEmailSignUpSubmit}
             className='flex flex-col gap-2 w-auto md:w-96 mx-auto'
           >
-            <input
-              type='text'
-              value={setSignUpForm.userName}
-              onChange={(e) =>
-                setSignUpForm({ ...signUpForm, userName: e.target.value })
-              }
-              placeholder='Name'
-              className='py-1 px-2 rounded-lg border border-gray-300 dark:border-gray-500 bg-gray-200 dark:bg-gray-700'
-            />
             <input
               type='email'
               value={setSignUpForm.email}

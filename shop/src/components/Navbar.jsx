@@ -29,7 +29,7 @@ const Navbar = ({
 
   return (
     <div>
-      <nav className='flex justify-between mx-4 h-[10vh]'>
+      <nav className='flex justify-between mx-4 h-[15vh] md:h-[10vh]'>
         <a
           href='/'
           className='hover:scale-105 duration-200 text-6xl md:text-7xl my-auto'
