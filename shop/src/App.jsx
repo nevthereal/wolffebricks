@@ -12,9 +12,11 @@ import { products } from "./productList";
 import CartProvider from "./cartContext";
 import Success from "./pages/Success";
 import Cancel from "./pages/Cancel";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 import Popup from "./components/Popup";
 
-import { app } from "./firebase";
+import "./firebase";
 
 import {
   signInWithPopup,
@@ -25,8 +27,6 @@ import {
   signInWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Terms from "./pages/Terms";
 
 const googleProvider = new GoogleAuthProvider();
 const auth = getAuth();
