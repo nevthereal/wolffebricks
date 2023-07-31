@@ -22,9 +22,13 @@ const Info = () => {
           who love to build and design LEGO models. In Summer 2022, we came up
           with the idea to sell our designs. William designed most of the sets,
           while I was busy building this site and processing all the orders. We
-          now sell full sets, instead of intructions only, we have a limited
-          storage though and only ship to these countries: Switzerland, Germany,
-          the UK and the US.
+          now sell full sets, instead of intructions only. Currently, we only
+          ship to Europe, the US, Canada, Korea and Japan. <br />
+          With purchasing our products, you do a favor to the climate.{" "}
+          <a href='https://climate.stripe.com/qDvMjm' className='font-bold'>
+            Carbon Removal
+          </a>{" "}
+          is funded by 0.5% of each purchase.
         </p>
       </div>
       <div className='my-6'>
