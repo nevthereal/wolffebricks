@@ -36,24 +36,44 @@ app.post("/checkout", async (req, res) => {
     line_items: lineItems,
     mode: "payment",
     allow_promotion_codes: true,
-    consent_collection: {
-      terms_of_service: "required",
+    success_url: `${DOMAIN}/success?id={CHECKOUT_SESSION_ID}`,
+    cancel_url: `${DOMAIN}/cancel`,
+    customer_email: userEmail,
+    billing_address_collection: "required",
+    automatic_tax: {
+      enabled: true,
     },
+
     custom_text: {
       shipping_address: {
         message:
           "Depending on where you live, your orders can take a bit longer",
       },
-      submit: {
-        message: "We'll email you the instructions and partlists",
-      },
     },
-    success_url: `${DOMAIN}/success?id={CHECKOUT_SESSION_ID}`,
-    cancel_url: `${DOMAIN}/cancel`,
-    customer_email: userEmail,
-    billing_address_collection: "required",
+    shipping_options: [
+      {
+        shipping_rate_data: {
+          type: "fixed_amount",
+          fixed_amount: {
+            amount: 500,
+            currency: "chf",
+          },
+          display_name: "Standard Shipping",
+          delivery_estimate: {
+            minimum: {
+              unit: "business_day",
+              value: 5,
+            },
+            maximum: {
+              unit: "business_day",
+              value: 15,
+            },
+          },
+        },
+      },
+    ],
     shipping_address_collection: {
-      allowed_countries: ["US", "CH", "GB", "DE"],
+      allowed_countries: ["CH", "DE", "GB", "FR", "US"],
     },
   });
 

@@ -35,8 +35,8 @@ const Success = () => {
                 {orderInfo.status}
               </li>
               <li>
-                <span className='font-semibold'>Order ID: </span>
-                {orderInfo.payment_intent}
+                <span className='font-semibold'>Checkout Session ID: </span>
+                {orderInfo.id}
               </li>
             </ul>
             <div className='my-2'>
