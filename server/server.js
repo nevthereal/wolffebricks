@@ -40,10 +40,6 @@ app.post("/checkout", async (req, res) => {
     cancel_url: `${DOMAIN}/cancel`,
     customer_email: userEmail,
     billing_address_collection: "required",
-    automatic_tax: {
-      enabled: true,
-    },
-
     custom_text: {
       shipping_address: {
         message:
@@ -69,8 +65,6 @@ app.post("/checkout", async (req, res) => {
               value: 15,
             },
           },
-          tax_behavior: "exclusive",
-          tax_code: "txcd_99999999",
         },
       },
     ],
