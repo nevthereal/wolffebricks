@@ -35,10 +35,16 @@ const CartItem = ({ item }) => {
               <span>{quantity}</span>
               <div className='flex gap-2'>
                 <button onClick={() => cart.addMoreToCart(id)}>
-                  <FontAwesomeIcon icon={faPlus} />
+                  <FontAwesomeIcon
+                    className='hover:scale-125 duration-200'
+                    icon={faPlus}
+                  />
                 </button>
                 <button onClick={() => cart.removeOneFromCart(id)}>
-                  <FontAwesomeIcon icon={faMinus} />
+                  <FontAwesomeIcon
+                    className='hover:scale-125 duration-200'
+                    icon={faMinus}
+                  />
                 </button>
               </div>
             </div>
