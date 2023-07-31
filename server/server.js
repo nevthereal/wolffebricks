@@ -55,7 +55,7 @@ app.post("/checkout", async (req, res) => {
         shipping_rate_data: {
           type: "fixed_amount",
           fixed_amount: {
-            amount: 500,
+            amount: 600,
             currency: "chf",
           },
           display_name: "Standard Shipping",
