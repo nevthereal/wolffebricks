@@ -69,11 +69,14 @@ app.post("/checkout", async (req, res) => {
               value: 15,
             },
           },
+          tax_behavior: "exclusive",
+          tax_code: "txcd_99999999",
         },
       },
     ],
     shipping_address_collection: {
       allowed_countries: [
+        "CH",
         "AT",
         "BE",
         "BG",
