@@ -15,20 +15,20 @@ const Footer = () => {
         </p>
         <div className='flex w-16 justify-center mx-auto my-4 text-5xl md:4xl space-x-2'>
           <a
-            href='https://instagram.com/willsbrixlego_official'
+            href='https://instagram.com/wolffebricks_official'
             target='_blank'
             rel='noreferrer noopener'
           >
             <FontAwesomeIcon icon={faInstagramSquare} />
           </a>
           <a
-            href='https://twitter.com/willsbrix'
+            href='https://twitter.com/wolffe_bricks'
             target='_blank'
             rel='noreferrer noopener'
           >
             <FontAwesomeIcon icon={faTwitterSquare} />
           </a>
-          <a href='mailto:support@willsbrix.com'>
+          <a href='mailto:support@wolffebricks.store'>
             <FontAwesomeIcon icon={faEnvelopeSquare} />
           </a>
         </div>

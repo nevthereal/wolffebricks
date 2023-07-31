@@ -90,7 +90,7 @@ const Info = () => {
         <a
           className='font-bold'
           target='_blank'
-          href='https://twitter.com/wolffe-bricks'
+          href='https://twitter.com/wolffe_bricks'
         >
           @wolffe-bricks
         </a>
