@@ -73,7 +73,7 @@ app.post("/checkout", async (req, res) => {
       },
     ],
     shipping_address_collection: {
-      allowed_countries: ["CH", "DE", "GB", "FR", "US"],
+      allowed_countries: ["CH", "DE", "GB", "FR", "IT", "US", "CA", "KR", "JP"],
     },
   });
 
