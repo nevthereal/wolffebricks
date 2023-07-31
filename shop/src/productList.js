@@ -51,7 +51,7 @@ export const products = [
     id: import.meta.env.VITE_PRODUCT_AT,
     link: "at-rt",
     title: "AT-RT Walker",
-    price: 15,
+    price: 10,
     designer: "William",
     description:
       "This All-Terrain Recon Transporter is ideal for every MOC. Since it is not too big, you can build it multiple times and display or put it in your base or battle field! It is capable of holding a trooper and 2 weapons!",
