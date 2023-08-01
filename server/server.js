@@ -20,6 +20,10 @@ const getProductPrice = async (productId) => {
   }
 };
 
+app.get("/", (req, res) => {
+  res.send("Hello There");
+});
+
 app.post("/checkout", async (req, res) => {
   const items = req.body.items;
   const userEmail = req.body.userEmail;
@@ -120,5 +124,6 @@ app.get("/product-data", async (req, res) => {
   const product = await stripe.products.retrieve(req.query.productId);
   res.json(product);
 });
+let PORT = 4000;
 
-app.listen(4000, () => console.log("LISTENING ON PORT 4000"));
+app.listen(PORT, () => console.log(`Running on http://localhost:${PORT}`));
