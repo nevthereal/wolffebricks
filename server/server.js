@@ -20,7 +20,7 @@ const getProductPrice = async (productId) => {
   }
 };
 
-app.get("/", (req, res) => {
+app.get("/", (res) => {
   res.send("Hello There");
 });
 

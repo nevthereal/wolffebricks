@@ -16,6 +16,7 @@ export const CartContext = createContext({
 export function CartProvider({ children }) {
   let navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [productDataMap, setProductDataMap] = useState({});
 
   const getMessage = (item, action) => {
     return `${item} was ${action} Cart`;
@@ -97,7 +98,6 @@ export function CartProvider({ children }) {
     let subTotal = 0;
     cartProducts.forEach((cartItem) => {
       if (cartItem && cartItem.id) {
-        // Add this check
         const productData = getProductData(cartItem.id);
         if (productData) {
           subTotal += productData.price * cartItem.quantity;
@@ -117,13 +117,42 @@ export function CartProvider({ children }) {
       const productExists = products.some(
         (product) => product.id === cartItem.id
       );
-      return productExists;
+
+      if (productDataMap[cartItem.id]) {
+        return productExists;
+      } else {
+        fetch(
+          `${import.meta.env.VITE_SERVER_URL}/product-data?productId=${
+            cartItem.id
+          }`
+        )
+          .then((response) => {
+            return response.json();
+          })
+          .then((product) => {
+            setProductDataMap((prevDataMap) => ({
+              ...prevDataMap,
+              [cartItem.id]: product,
+            }));
+
+            if (product.active) {
+              setCartProducts((prevCartProducts) =>
+                prevCartProducts.includes(cartItem)
+                  ? prevCartProducts
+                  : [...prevCartProducts, cartItem]
+              );
+              localStorage.setItem(
+                "cartProducts",
+                JSON.stringify(cartProducts)
+              );
+            }
+          })
+          .catch((error) => console.error(error));
+      }
     });
 
-    if (updatedCartProducts.length !== cartProducts.length) {
-      setCartProducts(updatedCartProducts);
-      localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
-    }
+    setCartProducts(updatedCartProducts);
+    localStorage.setItem("cartProducts", JSON.stringify(updatedCartProducts));
   }
 
   const contextValue = {
