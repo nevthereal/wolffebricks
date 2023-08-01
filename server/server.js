@@ -20,10 +20,6 @@ const getProductPrice = async (productId) => {
   }
 };
 
-app.get("/", (res) => {
-  res.send("Hello There");
-});
-
 app.post("/checkout", async (req, res) => {
   const items = req.body.items;
   const userEmail = req.body.userEmail;
