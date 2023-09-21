@@ -163,8 +163,8 @@ const Cart = ({
               ) : null}
               {isLoading && showDelayedMessage && (
                 <p className='italic'>
-                  Sometimes server requests can take a little longer. If so, be
-                  patient ...
+                  The server is taking it's time to respond... Please bear with
+                  us and don't refresh.
                 </p>
               )}
               <div className='my-2'>
